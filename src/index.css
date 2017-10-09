@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.main {
+  text-align: center;
+}
+
+ul.daypicker {
+  list-style: none;
+  padding: 0px;
+  cursor: pointer;
+}
+
+ul.daypicker li {
+  display: inline-block;
+  padding: 5px;
+}
+
+ul.daypicker li:hover {
+  background-color: magenta;
+}
+
+ul.daypicker li.selected {
+  background-color: turquoise;
+}
