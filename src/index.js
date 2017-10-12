@@ -1,50 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-const days = {
-    Su: 'Sunday',
-    M: 'Monday',
-    Tu: 'Tuesday',
-    W: 'Wedensday',
-    Th: 'Thursday',
-    F: 'Friday',
-    Sa: 'Saturday',
-    allDays: ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa']
-}
+import DayPicker from './DayPicker.jsx';
 
 class Cages extends React.Component {
     
     render() {
         const cages = this.props.cages.map((cage) => {
-            return (<button key={cage}>{cage}</button>);
+            return (<button key={cage} id={cage} onClick={this.props.selectCage}>{cage}</button>);
         })
         
         return (<div>{cages}</div>);
-    }
-}
-
-class DayPicker extends React.Component {
-    selectDay = (e) => {
-        this.props.selectDay(e.target.id);
-    }
-
-    render() {
-        console.log(this.props);
-        const d = days.allDays.map((val) => {
-            return (
-            <li key={val+'_item'} className={this.props.selectedDay === val ? 'selected': null}
-                onClick={this.selectDay} id={val} 
-            >
-                {val}
-            </li>);
-        });
-
-        return(
-            <ul className='daypicker'>
-                {d}
-            </ul>
-        );
     }
 }
 
@@ -53,8 +19,9 @@ class Main extends React.Component {
         super();
         this.cages = [
             'bees',
+            'stressed',
             'content',
-            'manic'
+            'happy'
         ]
 
         this.state = {
@@ -70,9 +37,11 @@ class Main extends React.Component {
     }
 
     selectCage = (cage) => {
-        this.setState({
-            
-        })
+        let feeling = cage.target.id;
+        this.setState(state => {
+            state[state.selectedDay] = feeling;
+            return state;
+        });
     }
 
     selectDay = (day) => {
@@ -87,7 +56,10 @@ class Main extends React.Component {
                 <h1>Cage Test</h1>
                 <div>
                     <DayPicker selectDay={this.selectDay} selectedDay={this.state.selectedDay} />
-                    <Cages selectedDay={this.selectedDay} cages={this.cages} />
+                    <Cages selectedDay={this.selectedDay} cages={this.cages} selectCage={this.selectCage} />
+                    <div className='cage_face'>
+                        <div className={this.state[this.state.selectedDay]}></div>
+                    </div>
                 </div>
             </div>
         );
