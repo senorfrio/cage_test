@@ -1,15 +1,6 @@
 import React from 'react';
 
-const days = {
-    Su: 'Sunday',
-    M: 'Monday',
-    Tu: 'Tuesday',
-    W: 'Wedensday',
-    Th: 'Thursday',
-    F: 'Friday',
-    Sa: 'Saturday',
-    allDays: ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa']
-}
+const days = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 
 export default class DayPicker extends React.Component {
     selectDay = (e) => {
@@ -17,7 +8,7 @@ export default class DayPicker extends React.Component {
     }
 
     render() {
-        const d = days.allDays.map((val) => {
+        const d = days.map((val) => {
             return (
             <li key={val+'_item'} className={this.props.selectedDay === val ? 'selected': null}
                 onClick={this.selectDay} id={val} 
