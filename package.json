@@ -10,7 +10,9 @@
     "chai": "^4.1.2",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
+    "jest-cli": "^21.2.1",
     "mocha": "^4.0.1",
+    "react-addons-test-utils": "^15.6.2",
     "react-scripts": "1.0.14",
     "react-test-renderer": "^16.0.0"
   },
