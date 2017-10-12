@@ -6,11 +6,16 @@ import DayPicker from '../DayPicker.jsx';
 describe('<DayPicker />', () => {
   it('renders a DayPicker', () => {
     const selectedDay = 'Su';
-    const selectDay = jest.fn();
+    const selectDayMock = jest.fn();
 
     const component = shallow(
-      <DayPicker selectedDay={selectedDay} selectDay={selectedDay}/>
+      <DayPicker selectedDay={selectedDay} selectDay={selectDayMock}/>
     );
-    console.log(component);
+    component.find('.selected').simulate('click', {
+      target: ''
+    });
+
+    expect(selectDayMock.mock.calls.length).toBe(1);
+    expect(component.find('.selected').contains(selectedDay));
   });
 });
