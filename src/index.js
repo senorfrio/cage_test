@@ -55,6 +55,7 @@ class Main extends React.Component {
             <div className='main'>
                 <h1>Cage Test</h1>
                 <div>
+                    <p>How are you feeling?</p>
                     <DayPicker selectDay={this.selectDay} selectedDay={this.state.selectedDay} />
                     <Cages selectedDay={this.selectedDay} cages={this.cages} selectCage={this.selectCage} />
                     <div className='cage_face'>

@@ -8,6 +8,11 @@ body {
   text-align: center;
 }
 
+button {
+  padding: 3px;
+  margin: 5px;
+}
+
 ul.daypicker {
   list-style: none;
   padding: 0px;
